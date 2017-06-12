@@ -12,12 +12,7 @@ use Doctrine\ORM\Mapping as ORM;
  */
 class Developer
 {
-    /**
-     * @ORM\OneToMany(targetEntity="Product_company", mappedBy="developerId")
-     */
-	protected $products;
-
-
+    
     /**
      * @var int
      *
@@ -30,16 +25,16 @@ class Developer
     /**
      * @var string
      *
-     * @ORM\Column(name="developer_name_vendor", type="string", length=255)
+     * @ORM\Column(name="developer_name_provider", type="string", length=255)
      */
-    private $developerNameVendor;
+    private $developerNameProvider;
 
     /**
      * @var int
-     * @ORM\ManyToOne(targetEntity="Vendor", inversedBy="developer")
-     * @ORM\JoinColumn(name="vendor_id", referencedColumnName="id", onDelete="CASCADE")
+     * @ORM\ManyToOne(targetEntity="provider", inversedBy="developer")
+     * @ORM\JoinColumn(name="provider_id", referencedColumnName="id", onDelete="CASCADE")
      */
-    private $vendorId;
+    private $provider;
 
     /**
      * @var string
@@ -47,6 +42,11 @@ class Developer
      * @ORM\Column(name="developer_name_company", type="string", length=255)
      */
     private $developerNameCompany;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductСompany", mappedBy="developer")
+     */
+    protected $productСompanys;
 
     /**
      * @var \DateTime
@@ -62,135 +62,5 @@ class Developer
      */
     private $modifiedAt;
 
-
-    /**
-     * Get id
-     *
-     * @return int
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Set developerNameVendor
-     *
-     * @param string $developerNameVendor
-     *
-     * @return Developer
-     */
-    public function setDeveloperNameVendor($developerNameVendor)
-    {
-        $this->developerNameVendor = $developerNameVendor;
-
-        return $this;
-    }
-
-    /**
-     * Get developerNameVendor
-     *
-     * @return string
-     */
-    public function getDeveloperNameVendor()
-    {
-        return $this->developerNameVendor;
-    }
-
-    /**
-     * Set vendorId
-     *
-     * @param integer $vendorId
-     *
-     * @return Developer
-     */
-    public function setVendorId($vendorId)
-    {
-        $this->vendorId = $vendorId;
-
-        return $this;
-    }
-
-    /**
-     * Get vendorId
-     *
-     * @return int
-     */
-    public function getVendorId()
-    {
-        return $this->vendorId;
-    }
-
-    /**
-     * Set developerNameCompany
-     *
-     * @param string $developerNameCompany
-     *
-     * @return Developer
-     */
-    public function setDeveloperNameCompany($developerNameCompany)
-    {
-        $this->developerNameCompany = $developerNameCompany;
-
-        return $this;
-    }
-
-    /**
-     * Get developerNameCompany
-     *
-     * @return string
-     */
-    public function getDeveloperNameCompany()
-    {
-        return $this->developerNameCompany;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Developer
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set modifiedAt
-     *
-     * @param \DateTime $modifiedAt
-     *
-     * @return Developer
-     */
-    public function setModifiedAt($modifiedAt)
-    {
-        $this->modifiedAt = $modifiedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get modifiedAt
-     *
-     * @return \DateTime
-     */
-    public function getModifiedAt()
-    {
-        return $this->modifiedAt;
-    }
 }
 
